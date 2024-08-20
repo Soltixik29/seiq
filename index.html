@@ -5,23 +5,59 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Seiq Discord Bot</title>
     <style>
-@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans&display=swap'); 
+        @import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans&display=swap');
+        @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css');
+
         body, html {
             margin: 0;
             padding: 0;
             font-family: "Pixelify Sans", sans-serif;
-            background-color: #1e1e1e;
-            color: #fff;
+            background-color: #121212;
+            color: #e0e0e0;
+            overflow-x: hidden;
+				scroll-behavior: smooth;
         }
+    .tos-content {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        background: #2c2c2c;
+        border-radius: 10px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+    }
+
+    h2 {
+        font-size: 36px;
+        margin-bottom: 20px;
+        text-align: center;
+        color: #fff;
+    }
+
+    h3 {
+        font-size: 24px;
+        margin-top: 20px;
+        color: #fff;
+    }
+
+    p {
+        font-size: 16px;
+        line-height: 1.6;
+        color: #bbb;
+        margin: 10px 0;
+    }
 
         header {
             position: relative;
-            height: 500px;
+            height: 600px;
             background-image: url('https://media.discordapp.net/attachments/1138639740611076298/1275493474300334171/IMG_0932.webp?ex=66c6175d&is=66c4c5dd&hm=b14f41fe725a2aa0f57ae232f2b8e05ef876df2a3fb1737706d6592d0c1d879a&');
             background-size: cover;
             background-position: center;
-            filter: brightness(95%);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            text-align: center;
         }
 
         header::after {
@@ -31,8 +67,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-        
-            pointer-events: none;
+            background: rgba(0, 0, 0, 0.6);
         }
 
         nav {
@@ -41,43 +76,66 @@
             left: 50%;
             transform: translateX(-50%);
             display: flex;
-            gap: 20px;
+            gap: 30px;
+            z-index: 1;
         }
 
         nav a {
             text-decoration: none;
-            color: #fff;
+            color: #e0e0e0;
             font-size: 18px;
             padding: 10px 15px;
             background-color: rgba(30, 30, 30, 0.7);
             border-radius: 5px;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s ease, transform 0.3s ease;
         }
 
         nav a:hover {
             background-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
         }
 
         .header-content {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .header-content img {
-            width: 100px;
+            width: 200px;
             margin-bottom: 20px;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
         }
 
         .header-content h1 {
-            font-size: 60px;
+            font-size: 70px;
             margin: 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
         }
 
         .header-content p {
-            font-size: 22px;
+            font-size: 24px;
             margin: 10px 0 20px;
         }
 
@@ -86,14 +144,26 @@
             color: #fff;
             font-size: 20px;
             padding: 15px 30px;
-            background-color: #6a0dad;
+            background: linear-gradient(90deg, #6a0dad, #7b1ec2);
             border-radius: 5px;
-            transition: background-color 0.3s ease;
+            transition: all 0.3s ease;
             display: inline-block;
+            box-shadow: 0 4px 20px rgba(106, 13, 173, 0.5);
         }
 
         .header-content a.join-btn:hover {
-            background-color: #7b1ec2;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 30px rgba(106, 13, 173, 0.7);
+            animation: glow 1.5s infinite alternate;
+        }
+
+        @keyframes glow {
+            0% {
+                box-shadow: 0 0 5px #7b1ec2, 0 0 10px #7b1ec2, 0 0 15px #6a0dad;
+            }
+            100% {
+                box-shadow: 0 0 20px #7b1ec2, 0 0 30px #7b1ec2, 0 0 40px #6a0dad;
+            }
         }
 
         .content {
@@ -102,12 +172,13 @@
         }
 
         .section {
-            margin-bottom: 80px;
+            margin-bottom: 40px;
         }
 
         h2 {
             font-size: 36px;
             margin-bottom: 20px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
         }
 
         p {
@@ -115,36 +186,74 @@
             line-height: 1.6;
         }
 
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            justify-items: center;
+        }
+
         .team-card {
-            background-color: #2c2c2c;
-            border-radius: 10px;
-            padding: 20px;
-	    padding-left: 20px;
-            display: inline-block;
+            background: linear-gradient(145deg, #2e2e2e, #1c1c1c);
+            border-radius: 15px;
+            padding: 30px;
             margin: 20px auto;
             border: 2px solid #6a0dad;
             text-align: center;
-            width: 200px:
+            width: 100%;
+            max-width: 350px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden;
+        }
+
+        .team-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.8);
         }
 
         .team-card img {
             border-radius: 50%;
-            width: 100px;
-            height: 100px;
+            width: 120px;
+            height: 120px;
             object-fit: cover;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
+            border: 4px solid #6a0dad;
         }
 
         .team-card h3 {
-            margin: 10px 0;
+            margin: 15px 0;
             font-size: 24px;
+            color: #fff;
+        }
+
+        .team-card h4 {
+            font-size: 18px;
+            color: #bbb;
+            margin: 5px 0;
+        }
+
+        .team-card p {
+            font-size: 16px;
+            color: #bbb;
+            margin-bottom: 20px;
+        }
+
+        .team-card .socials {
+            margin-top: 10px;
         }
 
         .team-card .socials a {
             margin: 0 10px;
             color: #fff;
-            font-size: 20px;
+            font-size: 22px;
             text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .team-card .socials a:hover {
+            color: #6a0dad;
+            transform: scale(1.2);
         }
 
         .faq {
@@ -176,83 +285,126 @@
     </style>
 </head>
 <body>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <header>
-        <nav>
-            <a href="#commands">Commands</a>
-            <a href="#team">Team</a>
-            <a href="#faq">FAQ</a>
-            <a href="#tos">TOS</a>
-        </nav>
-        <div class="header-content">
-            <img src="https://media.discordapp.net/attachments/1138639740611076298/1275498577300422696/logo_fantasy-removebg-preview.png?ex=66c61c1e&is=66c4ca9e&hm=74df5fcb5ba6fef52762ae77f1e7491aaadb822ed53128577503f0e11fe8860d&" alt="Seiq Logo">
-            <h1>Seiq</h1>
-            <p>Your friendly Discord bot</p>
-            <a href="#" class="join-btn">Join Now</a>
-        </div>
-    </header>
-
-    <div class="content">
-        <div id="commands" class="section">
-            <h2>Commands</h2>
-            <p>Seiq offers a wide range of commands to help you manage your server. Here is a list of all available commands and how to use them.</p>
-        </div>
-<hr>
-
-        <div id="team" class="section">
-            <h2>Team</h2>
-            <div id="soltix" class="team-card">
-                <img src="https://media.discordapp.net/attachments/1138639740611076298/1272618401419759778/Snapchat-1064249891.jpg?ex=66c584ff&is=66c4337f&hm=fe68fc3dad8fc13e5cbdd7237f5637871bc279eddb3d2588618ca6fbd14d476e&" alt="Team Member">
-                <h3>Soltix</h3>
-						
-					 <h4 style="color:red;">Founder</h4>
-					<hr>
-                <div class="socials">
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-linkedin"></i></a>
-                    <a href="#"><i class="fab fa-github"></i></a>
-                </div>
-            </div>
-		<div id="takazino" class="team-card">
-                <img src="https://cdn.discordapp.com/attachments/1138639740611076298/1275513781421609062/OT_3_supercropped.jpg?ex=66c62a47&is=66c4d8c7&hm=a6cb711b30925dba96eaf4ef50abde53c68015bc3afe17d79968dc28693c77f9&" alt="Team Member">
-                <h3>Takazikano</h3>
-						
-					 <h4 style="color:red;">Founder</h4>
-					<hr>
-                <div class="socials">
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-linkedin"></i></a>
-                    <a href="#"><i class="fab fa-github"></i></a>
-                </div>
-            </div>
-            <!-- Repeat .team-card for other team members -->
-        </div>
-
-        <div id="faq" class="section faq">
-            <h2>FAQ</h2>
-            <div>
-                <h3>How do I invite Seiq to my server?</h3>
-                <p>You can invite Seiq to your server by clicking the "Join Now" button at the top of the page.</p>
-            </div>
-            <div>
-                <h3>What are the available commands?</h3>
-                <p>Seiq provides a variety of commands for server management, moderation, and fun. Visit the Commands section for a detailed list.</p>
-            </div>
-            <div>
-                <h3>Is Seiq free to use?</h3>
-                <p>Yes, Seiq is completely free to use with no hidden costs. However, donations are appreciated to keep the project running.</p>
-            </div>
-            <!-- Add more FAQs as needed -->
-        </div>
-
-        <div id="tos" class="section">
-            <h2>TOS (Terms of Service)</h2>
-            <p>Read our terms of service to understand how you can use Seiq bot and what you can expect.</p>
-        </div>
+    <nav>
+        <a href="#commands">Commands</a>
+        <a href="#team">Team</a>
+        <a href="#faq">FAQ</a>
+        <a href="#tos">TOS</a>
+    </nav>
+    <div class="header-content">
+        <img src="https://media.discordapp.net/attachments/1138639740611076298/1275498577300422696/logo_fantasy-removebg-preview.png?ex=66c61c1e&is=66c4ca9e&hm=74df5fcb5ba6fef52762ae77f1e7491aaadb822ed53128577503f0e11fe8860d&" alt="Seiq Logo">
+        <h1>Seiq</h1>
+        <p>Your all-in-one Discord bot for playing games</p>
+        <a class="join-btn" href="#">Join the Server</a>
     </div>
+</header>
+<div class="content">
+    <section class="section" id="commands">
+        <h2>Commands</h2>
+        <p>Discover the powerful commands to enhance your Discord experience.</p>
+        <div class="team-grid">
+            <div class="team-card">
+                <img src="https://via.placeholder.com/120" alt="Card Image">
+                <h3>Command 1</h3>
+                <h4>Sub aka Name: Command One</h4>
+                <p>Description of Command 1 and how to use it.</p>
+                <div class="socials">
 
-    <footer>
-        &copy; 2024 Seiq Bot. All rights reserved.
-    </footer>
-</body>
-</html>
+                </div>
+            </div>
+            <div class="team-card">
+                <img src="https://via.placeholder.com/120" alt="Card Image">
+                <h3>Command 2</h3>
+                <h4>Sub aka Name: Command Two</h4>
+                <p>Description of Command 2 and how to use it.</p>
+                <div class="socials">
+
+                </div>
+            </div>
+            <div class="team-card">
+                <img src="https://via.placeholder.com/120" alt="Card Image">
+                <h3>Command 3</h3>
+                <h4>Sub aka Name: Command Three</h4>
+                <p>Description of Command 3 and how to use it.</p>
+                <div class="socials">
+                 
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="team">
+        <h2>Meet the Team</h2>
+        <div class="team-grid">
+            <div class="team-card">
+                <img src="https://media.discordapp.net/attachments/1138639740611076298/1262866668435017808/Snapchat-799269800.jpg?ex=66c5a37c&is=66c451fc&hm=e117973a115149235889797da60cc71e01dc2da9436232e0bd28d3c2fb4fe926&" alt="Team Member">
+                <h3>Soltix</h3>
+                <h4 style="color: purple;">Founder</h4>
+                <p>I'm a small Czech developer</p>
+                <div class="socials">
+                    <a href="#"><i class="fab fa-discord"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+            <div class="team-card">
+                <img src="https://media.discordapp.net/attachments/1138639740611076298/1275513781421609062/OT_3_supercropped.jpg?ex=66c62a47&is=66c4d8c7&hm=a6cb711b30925dba96eaf4ef50abde53c68015bc3afe17d79968dc28693c77f9&" alt="Team Member">
+                <h3>Takazino</h3>
+                <h4 style="color: purple;">Founder</h4>
+                <p>Bio</p>
+                <div class="socials">
+                    <a href="#"><i class="fab fa-discord"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+            <div class="team-card">
+                <img src="https://via.placeholder.com/120" alt="Team Member">
+                <h3>This can be you</h3>
+                <h4 style="color: purple;">Developer</h4>
+                <p>Here can be you.</p>
+                <div class="socials">
+                    <a href="#"><i class="fab fa-discord"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="faq">
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq">
+            <h3>What is Seiq?</h3>
+            <p>Seiq is a versatile Discord bot designed to enhance your server experience.</p>
+            <h3>How do I add Seiq to my server?</h3>
+            <p>You can invite Seiq to your server using the link provided above.</p>
+        </div>
+    </section>
+</div>
+    <h2>Terms of Service</h2>
+    <div id="tos" class="tos-content">
+        <h3>1. Acceptance of Terms</h3>
+        <p>By using our services, you agree to comply with these Terms of Service. If you do not agree, please do not use our services.</p>
+
+        <h3>2. Modifications to Terms</h3>
+        <p>We may update these terms from time to time. Any changes will be effective immediately upon posting the new terms on this page. Your continued use of our services after such changes constitutes your acceptance of the new Terms of Service.</p>
+
+        <h3>3. User Responsibilities</h3>
+        <p>You are responsible for maintaining the confidentiality of your account and password, and for restricting access to your computer. You agree to accept responsibility for all activities that occur under your account or password.</p>
+
+        <h3>4. Prohibited Activities</h3>
+        <p>You agree not to use the service for any illegal or unauthorized purpose. You must not transmit any worms or viruses or any code of a destructive nature.</p>
+
+        <h3>5. Limitation of Liability</h3>
+        <p>In no event shall we be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of our services.</p>
+
+        <h3>6. Governing Law</h3>
+        <p>These Terms of Service shall be governed by and construed in accordance with the laws of your jurisdiction, without regard to its conflict of law principles.</p>
+
+        <h3>7. Contact Information</h3>
+        <p>If you have any questions about these Terms of Service, please contact us at support@example.com.</p>
+    </div>
+</section>
+
+<footer>
+    <p>&copy; 2024 Seiq. All rights reserved.</p>
+</footer>
