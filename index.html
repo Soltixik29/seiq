@@ -430,15 +430,29 @@
             margin-top: 40px;
             font-size: 14px;
         }
+	.ad-section {
+    text-align: center;
+    margin: 40px 0;
+    background-color: #f7f7f7; /* Světle šedé pozadí pro odlišení */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Lehce zvednutý efekt */
+}
+
+.ad-label {
+    font-size: 14px;
+    color: #555; /* Mírně tmavší odstín šedé */
+    margin-bottom: 10px;
+}
     </style>
 </head>
 <body>
     <header>
     <nav>
-        <a href="#commands">Commands</a>
+        <a href="/commands">Commands</a>
         <a href="#team">Team</a>
-        <a href="#faq">FAQ</a>
-        <a href="#tos">TOS</a>
+        <a href="/store">Store</a>
+        <a href="#contact">Contact</a>
     </nav>
     <div class="header-content">
         <img src="logo.png" alt="Seiq Logo">
@@ -479,42 +493,16 @@
         <!-- Add more news-card divs as needed for additional news items -->
     </div>
 </section>
-    <section class="section" id="commands">
-        <h2>Commands</h2>
-        <p>Discover the powerful commands to enhance your Discord experience.</p>
-        <div class="team-grid">
-            <div class="team-card">
-                <img src="https://cdn.discordapp.com/attachments/1275191388513767567/1275538136658612295/th.jpg?ex=66c640f6&is=66c4ef76&hm=d8067a12761527d83a6c7e01f309e7c23d11dd73cbbb910b802dec75abb389d9&" alt="Card Image">
-                <h3>Explore</h3>
-                <h4>Command</h4><p>/explore</p>
-                <h4>Description</h4><p>Explore locations & find treasures</p>
-                <div class="socials">
-		<button class="copy-btn" onclick="navigator.clipboard.writeText('/explore');"><i class="fa-solid fa-copy"></i> copy
-                 </button>
-		</div>
-            </div>
-	    <div class="team-card">
-                <img src="https://cdn.discordapp.com/attachments/1275191388513767567/1275538669415174270/th_4.jpg?ex=66c64175&is=66c4eff5&hm=baf8e021b0033bca08efdfa2658b05344119f98b371915413d064798ad72ca36&" alt="Card Image">
-                <h3>Help</h3>
-                <h4>Command</h4><p>/help</p>
-                <h4>Description</h4><p>Forum which covers all your wonders</p>
-                <div class="socials">
-		<button class="copy-btn" onclick="navigator.clipboard.writeText('/help');"><i class="fa-solid fa-copy"></i> copy
-                 </button>
-                </div>
-            </div>
-            <div class="team-card">
-                <img src="https://cdn.discordapp.com/attachments/1275191388513767567/1275538233236652043/th_2.jpg?ex=66c6410d&is=66c4ef8d&hm=1452563c3fb87ccbc54cfa4621eb1b7f9fd42a6da18cc7b8267104256fc8cdec&" alt="Card Image">
-                <h3>Cards</h3>
-                <h4>Command</h4><p>/cards</p>
-                <h4>Description</h4><p>T rade cards & buy cards for wealth</p>
-                <div class="socials">
-                <button class="copy-btn" onclick="navigator.clipboard.writeText('/cards');"><i class="fa-solid fa-copy"></i> copy
-                 </button>
-                </div>
-            </div>
-        </div>
-    </section>
+    <section class="ad-section">
+    <p class="ad-label">Advertisement - This ad supports the bot development</p>
+    <ins class="adsbygoogle"
+         style="display:inline-block;width:728px;height:90px"
+         data-ad-client="ca-pub-7653151481364260"
+         data-ad-slot="1234567890"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</section>
 
     <section class="section" id="team">
         <h2>Meet the Team</h2>
