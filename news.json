@@ -6,8 +6,8 @@
         "author": {
             "name": "Soltix",
             "profile_picture": "DFD1FF26-8797-4AF4-88BF-A27524425B03.jpeg",
-            "verified": false,
-            "admin": true
+            "verified": true,
+            "admin": false
         }
     },
     {
@@ -17,8 +17,8 @@
         "author": {
             "name": "Soltix",
             "profile_picture": "DFD1FF26-8797-4AF4-88BF-A27524425B03.jpeg",
-            "verified": false,
-            "admin": true
+            "verified": true,
+            "admin": false
         }
     },
     {
@@ -29,7 +29,7 @@
             "name": "Soltix",
             "profile_picture": "DFD1FF26-8797-4AF4-88BF-A27524425B03.jpeg",
             "verified": true,
-            "admin": true
+            "admin": false
         }
     }
 ]
