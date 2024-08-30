@@ -1,0 +1,46 @@
+[
+    {
+        "title": "New System Update Released!",
+        "date": "2024-08-30",
+        "content": "Today we released a new update that improves performance and fixes bugs.",
+        "author": {
+            "name": "John Novak",
+            "profile_picture": "https://example.com/profiles/john.jpg",
+            "verified": true,
+            "admin": false
+        }
+    },
+    {
+        "title": "New Feature Added to the App",
+        "date": "2024-08-29",
+        "content": "The new feature allows you to better organize your tasks.",
+        "author": {
+            "name": "Eva Smith",
+            "profile_picture": "https://example.com/profiles/eva.jpg",
+            "verified": false,
+            "admin": true
+        }
+    },
+    {
+        "title": "Scheduled Maintenance Announcement",
+        "date": "2024-08-28",
+        "content": "We are planning server maintenance on Saturday from 10:00 AM to 12:00 PM.",
+        "author": {
+            "name": "Peter Brown",
+            "profile_picture": "https://example.com/profiles/peter.jpg",
+            "verified": true,
+            "admin": true
+        }
+    },
+    {
+        "title": "New Website Design Launched",
+        "date": "2024-08-27",
+        "content": "Our website has received a new modern design. We hope you like it!",
+        "author": {
+            "name": "Marie Johnson",
+            "profile_picture": "https://example.com/profiles/marie.jpg",
+            "verified": false,
+            "admin": false
+        }
+    }
+]
