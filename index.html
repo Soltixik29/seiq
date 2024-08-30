@@ -430,21 +430,26 @@
             margin-top: 40px;
             font-size: 14px;
         }
-	.ad-section {
+.ad-section {
     text-align: center;
-    margin: 40px 0;
-    background-color: #f7f7f7; /* Světle šedé pozadí pro odlišení */
+    margin: 40px auto;
+    max-width: 90%;
     padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Lehce zvednutý efekt */
+    background-color: var(--background-color, #1e1e1e); /* Tmavě šedé pozadí (mírně světlejší než hlavní pozadí) */
+    border: 1px solid var(--border-color, #333333); /* Subtilní tmavší ohraničení */
+    border-radius: var(--border-radius, 8px);
+    box-shadow: var(--box-shadow, 0 2px 4px rgba(0, 0, 0, 0.5)); /* Stín s větší intenzitou pro tmavé pozadí */
 }
 
 .ad-label {
-    font-size: 14px;
-    color: #555; /* Mírně tmavší odstín šedé */
+    font-family: var(--font-family, Arial, sans-serif);
+    font-size: var(--font-size, 14px);
+    color: var(--text-color, #cccccc); /* Světle šedý text pro dobrou čitelnost */
     margin-bottom: 10px;
 }
     </style>
+	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7653151481364260"
+     crossorigin="anonymous"></script>
 </head>
 <body>
     <header>
