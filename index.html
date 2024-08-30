@@ -308,20 +308,22 @@
             color: #bbb; /* Text color */
             line-height: 1.5; /* Better readability */
         }
+.author-container {
+    display: flex; /* Use flexbox for alignment */
+    align-items: center; /* Center vertically */
+    margin-top: 10px; /* Space above author info */
+}
 
-        /* Author icon styling */
-        .author-icon {
-            position: absolute; /* Absolute positioning */
-            top: 10px; /* Positioning from top */
-            right: 10px; /* Positioning from right */
-            color: #6a0dad; /* Icon color */
-            font-size: 16px; /* Icon size */
-        }
-	    
 .author-name {
     font-size: 14px; /* Author name font size */
     color: #bbb; /* Author name color */
-    margin-top: 5px; /* Space above author name */
+    margin-left: 10px; /* Space between image and name */
+}
+
+.author-icon {
+    margin-left: 10px; /* Space between name and icon */
+    color: #6a0dad; /* Icon color */
+    font-size: 16px; /* Icon size */
 }
 
         .team-grid {
@@ -483,11 +485,7 @@
     </div>
 </header>
 <div class="content">
-<!-- Add this section above the "commands" section -->
-	<div class="news-grid" id="news-container">
-    <!-- News cards will be injected here by JavaScript -->
-</div>
-
+<div class="news-grid" id="news-container"></div>
 <script>
     // Fetch news from news.json and display it
     fetch('news.json')
@@ -522,29 +520,34 @@
                 const paragraph = document.createElement('p');
                 paragraph.textContent = newsItem.content;
 
+                // Create author container
+                const authorContainer = document.createElement('div');
+                authorContainer.className = 'author-container'; // New container for author info
+
                 // Create author name element
-                const authorName = document.createElement('div');
+                const authorName = document.createElement('span');
                 authorName.className = 'author-name';
                 authorName.textContent = newsItem.author.name; // Author's name
 
-                // Append title, date, paragraph, and author name to content
+                // Add verification or admin icon
+                const icon = document.createElement('i');
+                icon.className = newsItem.author.verified ? 
+                    'fas fa-check-circle author-icon' : 
+                    (newsItem.author.admin ? 'fas fa-user-shield author-icon' : '');
+
+                // Append name and icon to author container
+                authorContainer.appendChild(img);
+                authorContainer.appendChild(authorName); // Add author name to container
+                authorContainer.appendChild(icon); // Add icon to container
+
+                // Append title, date, paragraph, and author container to content
                 content.appendChild(title);
                 content.appendChild(date);
                 content.appendChild(paragraph);
-                content.appendChild(authorName); // Add author name to content
+                content.appendChild(authorContainer); // Add author container to content
 
-                // Append image and content to news card
-                newsCard.appendChild(img);
+                // Append news card to the container
                 newsCard.appendChild(content);
-
-                // Add verification or admin icon
-                const icon = document.createElement('i');
-                if (newsItem.author.verified) {
-                    icon.className = 'fas fa-check-circle author-icon'; // Verified icon
-                } else if (newsItem.author.admin) {
-                    icon.className = 'fas fa-user-shield author-icon'; // Admin icon
-                }
-                newsCard.appendChild(icon);
 
                 // Append news card to the container
                 newsContainer.appendChild(newsCard);
@@ -552,7 +555,9 @@
         })
         .catch(error => console.error('Error fetching news:', error));
 </script>
-    <section class="ad-section">
+</div>
+	
+  <section class="ad-section">
     <p class="ad-label">Advertisement - This ad supports the bot development</p>
     <ins class="adsbygoogle"
          style="display:inline-block;width:728px;height:90px"
