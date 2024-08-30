@@ -247,80 +247,77 @@
             font-size: 18px;
             line-height: 1.6;
         }
-	    body {
-    background-color: #121212; /* Default background */
-    font-family: 'Arial', sans-serif; /* Modern font */
-    color: #fff; /* Default text color */
-}
 
-.news-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive columns */
-    gap: 40px; /* Spacing between cards */
-    margin: 40px auto; /* Centering grid */
-    padding: 20px; /* Padding around grid */
-}
 
-.news-card {
-    background: linear-gradient(145deg, #2e2e2e, #1c1c1c); /* Card background */
-    border-radius: 15px; /* Rounded corners */
-    padding: 20px;
-    border: 2px solid #6a0dad; /* Border color */
-    display: flex; /* Flexbox for alignment */
-    flex-direction: column; /* Vertical stacking */
-    justify-content: space-between; /* Space between elements */
-    width: 100%;
-    max-width: 350px; /* Maximum width */
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6); /* Shadow effect */
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Hover effect */
-    overflow: hidden; /* Hide overflow */
-    position: relative; /* For absolute positioning of icons */
-}
+	        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive columns */
+            gap: 40px; /* Spacing between cards */
+            margin: 40px auto; /* Centering grid */
+            padding: 20px; /* Padding around grid */
+        }
 
-.news-card:hover {
-    transform: translateY(-5px); /* Slight lift on hover */
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.8); /* Enhanced shadow */
-}
+        .news-card {
+            background: linear-gradient(145deg, #2e2e2e, #1c1c1c); /* Card background */
+            border-radius: 15px; /* Rounded corners */
+            padding: 20px;
+            border: 2px solid #6a0dad; /* Border color */
+            display: flex; /* Flexbox for alignment */
+            flex-direction: column; /* Vertical stacking */
+            justify-content: space-between; /* Space between elements */
+            width: 100%;
+            max-width: 350px; /* Maximum width */
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6); /* Shadow effect */
+            transition: transform 0.3s ease, box-shadow 0.3s ease; /* Hover effect */
+            overflow: hidden; /* Hide overflow */
+            position: relative; /* For absolute positioning of icons */
+        }
 
-.news-card img {
-    border-radius: 50%; /* Circular image */
-    width: 80px; /* Fixed width */
-    height: 80px; /* Fixed height */
-    object-fit: cover; /* Cover aspect ratio */
-    margin-bottom: 15px; /* Margin below image */
-    border: 4px solid #6a0dad; /* Border around image */
-}
+        .news-card:hover {
+            transform: translateY(-5px); /* Slight lift on hover */
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.8); /* Enhanced shadow */
+        }
 
-.news-content {
-    flex: 1; /* Flexible growth */
-}
+        .news-card img {
+            border-radius: 50%; /* Circular image */
+            width: 80px; /* Fixed width */
+            height: 80px; /* Fixed height */
+            object-fit: cover; /* Cover aspect ratio */
+            margin-bottom: 15px; /* Margin below image */
+            border: 4px solid #6a0dad; /* Border around image */
+        }
 
-.news-content h3 {
-    font-size: 20px; /* Slightly smaller heading */
-    margin-bottom: 5px; /* Space below heading */
-    color: #fff; /* Heading color */
-}
+        .news-content {
+            flex: 1; /* Flexible growth */
+        }
 
-.news-date {
-    font-size: 14px; /* Date font size */
-    color: #bbb; /* Date color */
-    margin-bottom: 10px; /* Space below date */
-}
+        .news-content h3 {
+            font-size: 20px; /* Slightly smaller heading */
+            margin-bottom: 5px; /* Space below heading */
+            color: #fff; /* Heading color */
+        }
 
-.news-content p {
-    font-size: 16px; /* Text size */
-    color: #bbb; /* Text color */
-    line-height: 1.5; /* Better readability */
-}
+        .news-date {
+            font-size: 14px; /* Date font size */
+            color: #bbb; /* Date color */
+            margin-bottom: 10px; /* Space below date */
+        }
 
-/* Author icon styling */
-.author-icon {
-    position: absolute; /* Absolute positioning */
-    top: 10px; /* Positioning from top */
-    right: 10px; /* Positioning from right */
-    color: #6a0dad; /* Icon color */
-    font-size: 16px; /* Icon size */
-}
+        .news-content p {
+            font-size: 16px; /* Text size */
+            color: #bbb; /* Text color */
+            line-height: 1.5; /* Better readability */
+        }
+
+        /* Author icon styling */
+        .author-icon {
+            position: absolute; /* Absolute positioning */
+            top: 10px; /* Positioning from top */
+            right: 10px; /* Positioning from right */
+            color: #6a0dad; /* Icon color */
+            font-size: 16px; /* Icon size */
+        }
+
         .team-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -481,41 +478,69 @@
 </header>
 <div class="content">
 <!-- Add this section above the "commands" section -->
-<div class="news-grid" id="news-container"></div>
+	<div class="news-grid" id="news-container">
+    <!-- News cards will be injected here by JavaScript -->
+</div>
+
 <script>
+    // Fetch news from news.json and display it
     fetch('news.json')
         .then(response => response.json())
         .then(data => {
-            const container = document.getElementById('news-container');
+            const newsContainer = document.getElementById('news-container');
+
             data.forEach(newsItem => {
+                // Create news card element
                 const newsCard = document.createElement('div');
-                newsCard.classList.add('news-card');
+                newsCard.className = 'news-card';
 
-                // Přidání verifikované nebo admin ikony
-                let roleIcon = '';
+                // Create image element for author
+                const img = document.createElement('img');
+                img.src = newsItem.author.profile_picture;
+                img.alt = newsItem.author.name;
+
+                // Create content container
+                const content = document.createElement('div');
+                content.className = 'news-content';
+
+                // Create title element
+                const title = document.createElement('h3');
+                title.textContent = newsItem.title;
+
+                // Create date element
+                const date = document.createElement('div');
+                date.className = 'news-date';
+                date.textContent = new Date(newsItem.date).toLocaleDateString(); // Format date
+
+                // Create paragraph element
+                const paragraph = document.createElement('p');
+                paragraph.textContent = newsItem.content;
+
+                // Append title, date, and paragraph to content
+                content.appendChild(title);
+                content.appendChild(date);
+                content.appendChild(paragraph);
+
+                // Append image and content to news card
+                newsCard.appendChild(img);
+                newsCard.appendChild(content);
+
+                // Add verification or admin icon
+                const icon = document.createElement('i');
                 if (newsItem.author.verified) {
-                    roleIcon = '<i class="fas fa-check-circle" style="color: #00aaff;"></i>'; // Ikona pro ověřeného uživatele
+                    icon.className = 'fas fa-check-circle author-icon'; // Verified icon
+                } else if (newsItem.author.admin) {
+                    icon.className = 'fas fa-user-shield author-icon'; // Admin icon
                 }
-                if (newsItem.author.admin) {
-                    roleIcon = '<i class="fas fa-shield-alt" style="color: #ffd700;"></i>'; // Ikona pro administrátora
-                }
+                newsCard.appendChild(icon);
 
-                newsCard.innerHTML = `
-                    <img src="${newsItem.author.profile_picture}" alt="${newsItem.author.name}">
-                    <div class="news-content">
-                        <h3>${newsItem.title}</h3>
-                        <p class="news-date">${newsItem.date}</p>
-                        <p>${newsItem.content}</p>
-                        <div class="author-info">
-                            <p>${newsItem.author.name} ${roleIcon}</p>
-                        </div>
-                    </div>
-                `;
-                container.appendChild(newsCard);
+                // Append news card to the container
+                newsContainer.appendChild(newsCard);
             });
         })
-        .catch(error => console.error('Error loading news:', error));
-</section>
+        .catch(error => console.error('Error fetching news:', error));
+</script>
+
     <section class="ad-section">
     <p class="ad-label">Advertisement - This ad supports the bot development</p>
     <ins class="adsbygoogle"
