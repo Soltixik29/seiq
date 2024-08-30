@@ -2,18 +2,7 @@
     {
         "title": "New Ad System!",
         "date": "2024-08-30",
-        "content": "Today we added Ad. It's tempomary, the development cost some money and this Is way how we can get small amount of that money back. You can also support us by buying premium at store: <a href="/store">Seiq Store</a>,
-        "author": {
-            "name": "Soltix",
-            "profile_picture": "DFD1FF26-8797-4AF4-88BF-A27524425B03.jpeg",
-            "verified": true,
-            "admin": false
-        }
-    },
-    {
-        "title": "New Bot Update Released!",
-        "date": "2024-08-30",
-        "content": "Today we released a new update that improves functions and fixes bugs.",
+        "content": "Today we added Ad. It's tempomary, the development cost some money and this Is way how we can get small amount of that money back. You can also support us by buying premium at store",
         "author": {
             "name": "Soltix",
             "profile_picture": "DFD1FF26-8797-4AF4-88BF-A27524425B03.jpeg",
