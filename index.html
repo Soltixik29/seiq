@@ -247,7 +247,6 @@
             font-size: 18px;
             line-height: 1.6;
         }
-/* Add this CSS to style the news section */
 .news-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -304,6 +303,18 @@
 .news-content p {
     font-size: 16px;
     color: #bbb;
+}
+
+.author-info {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    font-size: 16px;
+    color: #bbb;
+}
+
+.author-info i {
+    margin-left: 8px;
 }
 
         .team-grid {
@@ -466,36 +477,42 @@
 </header>
 <div class="content">
 <!-- Add this section above the "commands" section -->
-<section class="section" id="news">
-    <h2>News</h2>
-    <div class="news-grid">
-        <div class="news-card">
-            <img src="logo.png" alt="User Avatar">
-            <div class="news-content">
-                <h3 style="color: purple;">Seiq bot<i style="color: lime;"class="fa-solid fa-check"></i></h3>
-                <p class="news-date">Created on: August 21, 2024</p>
-                <h4>We are currently working on all important features.</h4>
-            </div>
-        </div>
- <div class="news-card">
-            <img src="logo.png" alt="User Avatar">
-            <div class="news-content">
-                <h3 style="color: purple;">Seiq Bot<i style="color: lime;"class="fa-solid fa-check"></i></h3>
-                <p class="news-date">Created on: August 21, 2024</p>
-                <h4>We are now in like 2% progress</h4>
-            </div>
-        </div>
- <div class="news-card">
-            <img src="DFD1FF26-8797-4AF4-88BF-A27524425B03.jpeg" alt="User Avatar">
-            <div class="news-content">
-                <h3 style="color: purple;">Soltix <i style="color: lime;"class="fa-solid fa-check"></i></h3>
-                <p class="news-date">Created on: August 30, 2024</p>
-                <h4>We are just strarting to do everything important to make the bot the BEST IN THE WEST.</h4>
-            </div>
-        </div>
-        <!-- Add more news-card divs as needed for additional news items -->
-    </div>
-</section>
+<div class="news-grid" id="news-container"></div>
+
+<script>
+    fetch('news.json')
+        .then(response => response.json())
+        .then(data => {
+            const container = document.getElementById('news-container');
+            data.forEach(newsItem => {
+                const newsCard = document.createElement('div');
+                newsCard.classList.add('news-card');
+
+                // Přidání verifikované nebo admin ikony
+                let roleIcon = '';
+                if (newsItem.author.verified) {
+                    roleIcon = '<i class="fas fa-check-circle" style="color: #00aaff;"></i>'; // Ikona pro ověřeného uživatele
+                }
+                if (newsItem.author.admin) {
+                    roleIcon = '<i class="fas fa-shield-alt" style="color: #ffd700;"></i>'; // Ikona pro administrátora
+                }
+
+                newsCard.innerHTML = `
+                    <img src="${newsItem.author.profile_picture}" alt="${newsItem.author.name}">
+                    <div class="news-content">
+                        <h3>${newsItem.title}</h3>
+                        <p class="news-date">${newsItem.date}</p>
+                        <p>${newsItem.content}</p>
+                        <div class="author-info">
+                            <p>${newsItem.author.name} ${roleIcon}</p>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(newsCard);
+            });
+        })
+        .catch(error => console.error('Error loading news:', error));
+</script>
     <section class="ad-section">
     <p class="ad-label">Advertisement - This ad supports the bot development</p>
     <ins class="adsbygoogle"
