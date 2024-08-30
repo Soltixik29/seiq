@@ -6,19 +6,8 @@
         "author": {
             "name": "Soltix",
             "profile_picture": "DFD1FF26-8797-4AF4-88BF-A27524425B03.jpeg",
-            "verified": true,
-            "admin": false
-        }
-    },
-    {
-        "title": "New Website Design Launched",
-        "date": "2024-08-27",
-        "content": "Our website has received a new modern design. We hope you like it!",
-        "author": {
-            "name": "Soltix",
-            "profile_picture": "DFD1FF26-8797-4AF4-88BF-A27524425B03.jpeg",
-            "verified": true,
-            "admin": false
+            "verified": false,
+            "admin": true
         }
     }
 ]
