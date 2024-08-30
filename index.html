@@ -485,13 +485,13 @@
     </div>
 </header>
 <div class="content">
-<div class="team-grid"></div>
+<div class="team-grid" id="news">
 <script>
     // Fetch news from news.json and display it
     fetch('news.json')
         .then(response => response.json())
         .then(data => {
-            const newsContainer = document.getElementById('news-container');
+            const newsContainer = document.getElementById('news');
 
             data.forEach(newsItem => {
                 // Create news card element
