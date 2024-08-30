@@ -250,9 +250,10 @@
 .news-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
+    gap: 40px; /* Increased gap for better spacing */
     justify-items: center;
     margin-top: 40px;
+    padding: 20px; /* Add padding to the grid */
 }
 
 .news-card {
@@ -268,6 +269,7 @@
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     overflow: hidden;
+    position: relative; /* Position for icon overlay */
 }
 
 .news-card:hover {
@@ -305,19 +307,13 @@
     color: #bbb;
 }
 
-.author-info {
-    display: flex;
-    align-items: center;
-    margin-top: 10px;
-    font-size: 16px;
-    color: #bbb;
-}
-
-.author-info i {
-    margin-left: 8px;
-}
-
-        .team-grid {
+/* Style for the author verified icon */
+.author-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: #6a0dad; /* Color for the icon */
+}        .team-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
