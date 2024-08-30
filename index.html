@@ -321,6 +321,13 @@
     color: #6a0dad; /* Icon color */
     font-size: 16px; /* Icon size */
 }
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            justify-items: center;
+        }
+
         .team-card {
             background: linear-gradient(145deg, #2e2e2e, #1c1c1c);
             border-radius: 15px;
@@ -475,7 +482,6 @@
 <div class="content">
 <!-- Add this section above the "commands" section -->
 <div class="news-grid" id="news-container"></div>
-
 <script>
     fetch('news.json')
         .then(response => response.json())
@@ -509,7 +515,7 @@
             });
         })
         .catch(error => console.error('Error loading news:', error));
-</script>
+</section>
     <section class="ad-section">
     <p class="ad-label">Advertisement - This ad supports the bot development</p>
     <ins class="adsbygoogle"
@@ -557,6 +563,7 @@
         </div>
     </section>
 
+    
     <section class="section" id="faq">
         <h2>Frequently Asked Questions</h2>
         <div class="faq">
